@@ -1,0 +1,8 @@
+{
+  "name": "@othello/othello",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "othello"
+  }
+}
