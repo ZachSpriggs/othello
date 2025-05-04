@@ -4,10 +4,19 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/othello-e2e"
+      "path": "./apps/othello"
     },
     {
-      "path": "./apps/othello"
+      "path": "./libs/game-core"
+    },
+    {
+      "path": "./libs/store"
+    },
+    {
+      "path": "./libs/types"
+    },
+    {
+      "path": "./libs/ui"
     }
   ]
 }

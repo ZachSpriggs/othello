@@ -10,24 +10,31 @@
       "@nx/react/typings/cssmodule.d.ts",
       "@nx/react/typings/image.d.ts",
       "vite/client"
-    ],
-    "rootDir": "src"
+    ]
   },
-  "exclude": [
-    "out-tsc",
-    "dist",
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts",
-    "src/**/*.spec.tsx",
-    "src/**/*.test.tsx",
-    "src/**/*.spec.js",
-    "src/**/*.test.js",
-    "src/**/*.spec.jsx",
-    "src/**/*.test.jsx",
-    "jest.config.ts",
-    "eslint.config.js",
-    "eslint.config.cjs",
-    "eslint.config.mjs"
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../../libs/**/src/**/*.ts",
+    "../../libs/**/src/**/*.tsx"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.stories.tsx",
+    "../../libs/**/jest.config.ts",
+    "../../libs/**/vite.config.ts",
+    "../../libs/**/storybook.config.ts",
+    "../../libs/**/index.ts"
+  ],
+  "references": [
+    {
+      "path": "../../libs/store/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/ui/tsconfig.lib.json"
+    }
+  ]
 }

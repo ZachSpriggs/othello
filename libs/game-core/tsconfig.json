@@ -3,13 +3,7 @@
   "include": [],
   "references": [
     {
-      "path": "../../libs/store"
-    },
-    {
-      "path": "../../libs/ui"
-    },
-    {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.lib.json"
     },
     {
       "path": "./tsconfig.spec.json"

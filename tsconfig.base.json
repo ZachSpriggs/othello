@@ -16,6 +16,13 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["development"]
+    "customConditions": ["development"],
+    "baseUrl": ".",
+    "paths": {
+      "@othello/game-core": ["libs/game-core/src/index.ts"],
+      "@othello/store": ["libs/store/src/index.ts"],
+      "@othello/types": ["libs/types/src/index.ts"],
+      "@othello/ui": ["libs/ui/src/index.ts"]
+    }
   }
 }

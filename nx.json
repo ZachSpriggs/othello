@@ -31,7 +31,8 @@
           "buildDepsName": "build-deps",
           "watchDepsName": "watch-deps"
         }
-      }
+      },
+      "exclude": ["types/*"]
     },
     {
       "plugin": "@nx/react/router-plugin",
@@ -78,6 +79,15 @@
       "options": {
         "targetName": "test"
       }
+    },
+    {
+      "plugin": "@nx/js/typescript",
+      "include": ["types/*"],
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        }
+      }
     }
   ],
   "targetDefaults": {
@@ -101,7 +111,8 @@
       },
       "library": {
         "style": "tailwind",
-        "linter": "eslint"
+        "linter": "eslint",
+        "unitTestRunner": "jest"
       }
     }
   }

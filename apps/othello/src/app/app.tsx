@@ -1,50 +1,37 @@
-import NxWelcome from './nx-welcome';
+import React from 'react';
+import { Board, Scoreboard, Modal } from '@othello/ui';
+import { useAppDispatch, useAppSelector } from '@othello/store';
+import { reset } from '@othello/store';
+import '../styles.css';
 
-import { Route, Routes, Link } from 'react-router-dom';
+export default function App() {
+  const dispatch = useAppDispatch();
+  const isGameOver = useAppSelector(state => state.game.isGameOver);
+  const score = useAppSelector(state => state.game.score);
 
-export function App() {
+  let winner: "B" | "W" | null=null;
+  if(isGameOver) {
+    if(score.B > score.W){
+      winner = "B";
+    } else if (score.W > score.B){
+      winner = "W";
+    }
+  }
+
   return (
-    <div>
-      <NxWelcome title="othello" />
-
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              This is the generated root route.{' '}
-              <Link to="/page-2">Click here for page 2.</Link>
-            </div>
-          }
-        />
-        <Route
-          path="/page-2"
-          element={
-            <div>
-              <Link to="/">Click here to go back to root page.</Link>
-            </div>
-          }
-        />
-      </Routes>
-      {/* END: routes */}
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-4 p-4">
+      <h1 className="text-3xl font-bold">Welcome to Othello</h1>
+      <Scoreboard/>
+      <Board/>
+      <button
+        className="bg-blue-600 text-white px-4 py-2 rounded"
+        onClick={() => dispatch(reset())}
+      >
+        Reset Game
+      </button>
+      {isGameOver && winner && (
+        <Modal winner={winner} onClose={() => dispatch(reset())} />
+      )}
     </div>
   );
 }
-
-export default App;
