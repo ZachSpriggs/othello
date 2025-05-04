@@ -1,8 +1,8 @@
 # Instructions #
-# git clone 
-# cd othello
-# npm install
-# npm start
+## git clone 
+## cd othello
+## npm install
+## npm start
 
 Title: Othello game 
 
