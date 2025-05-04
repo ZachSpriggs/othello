@@ -1,6 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { Player } from '@othello/game-core';
+import { Player } from '@othello/types';
 
 export interface ModalProps {
   winner: Player;
@@ -10,6 +10,8 @@ export interface ModalProps {
 export default function Modal({ winner, onClose }: ModalProps) {
   const winnerName = winner === 'B' ? 'Black' : 'White';
 
+  // I used chatgpt here to help me with styling the modal to look a bit better.
+  // I'm not super familiar with Tailwind so it just looked off
   return (
     <div
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"

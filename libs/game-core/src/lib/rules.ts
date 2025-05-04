@@ -1,4 +1,4 @@
-import { Board, Player, Coordinate } from "./types";
+import { Board, Player, Coordinate } from "@othello/types";
 
 const directions: Coordinate[] = [
   {row: -1, col: -1}, 
@@ -14,6 +14,11 @@ const directions: Coordinate[] = [
 export function getValidMoves(board: Board, player: Player): Coordinate[] {
   const opponent: Player = player === 'B' ? 'W' : 'B';
   const valid: Coordinate[] = [];
+
+  // My logic was off here initially for checking if a move was valid,
+  // I was running into an issue where I was able to place a disc 
+  // next to my own disc. I used chatgpt here to help flush out the logic
+
   for(let r = 0; r < 8; r++){
     for(let c = 0; c < 8; c++){
       if(board[r][c] !== null) continue;

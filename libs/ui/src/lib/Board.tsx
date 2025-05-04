@@ -3,21 +3,35 @@ import Tile from './Tile';
 import { useAppSelector, useAppDispatch } from '@othello/store';
 import { makeMove } from '@othello/store';
 
-export default function Board() {
-  const board = useAppSelector((state) => state.game.board);
+export default function Board({ showHighlights }: { showHighlights: boolean }) {
+  const board = useAppSelector(s => s.game.board);
+  const validMoves = useAppSelector(s => s.game.validMoves);
   const dispatch = useAppDispatch();
+  const size = board[0]?.length ?? 8;
 
   return (
-    <div className="grid grid-cols-8 gap-0 border border-black w-[448px]">
-      {board.map((row, rowIdx) =>
-        row.map((cell, cellIdx) => (
-          <Tile
-          key={`${rowIdx}-${cellIdx}`}
-          value={cell}
-          onClick={() => dispatch(makeMove({row: rowIdx, col: cellIdx}))}
-          />
-        ))
+    <div
+      className="grid gap-0 border border-black"
+      style={{
+        gridTemplateColumns: `repeat(${size}, 3.5rem)`,
+        gridAutoRows: '3.5rem',
+      }}
+    >
+      {board.map((row, r) =>
+        row.map((cell, c) => {
+          const isValid = validMoves.some(m => m.row === r && m.col === c);
+          return (
+            <Tile
+              key={`${r}-${c}`}
+              value={cell}
+              isValid={isValid}
+              showHighlights={showHighlights}
+              onClick={() => dispatch(makeMove({ row: r, col: c }))}
+            />
+          );
+        })
       )}
     </div>
   );
 }
+
